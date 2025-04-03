@@ -11,10 +11,10 @@
             </dataSource>
         </environment>
     </environments>
-    <mappers>
-        <mapper resource="com/example/mybatis/mappers/PropertyMapper.xml"/>
-        <mapper resource="com/example/mybatis/mappers/UserMapper.xml"/>
-        <mapper resource="com/example/mybatis/mappers/LocationMapper.xml"/>
-        <mapper resource="com/example/mybatis/mappers/PropertyImageMapper.xml"/>
-    </mappers>
+<!--    <mappers>-->
+<!--        <mapper resource="com/example/mybatis/mappers/PropertyMapper.xml"/>-->
+<!--        <mapper resource="com/example/mybatis/mappers/UserMapper.xml"/>-->
+<!--        <mapper resource="com/example/mybatis/mappers/LocationMapper.xml"/>-->
+<!--        <mapper resource="com/example/mybatis/mappers/PropertyImageMapper.xml"/>-->
+<!--    </mappers>-->
 </configuration>
