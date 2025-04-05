@@ -2,10 +2,12 @@ package io.github.gitagliaudyte.estamate.persistence;
 
 import io.github.gitagliaudyte.estamate.entities.Owner;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+@ApplicationScoped
 public class OwnersDAO {
     @Inject
     private EntityManager entityManager;

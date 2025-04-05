@@ -1,5 +1,6 @@
 package io.github.gitagliaudyte.estamate.persistence;
 
+import io.github.gitagliaudyte.estamate.entities.Agent;
 import io.github.gitagliaudyte.estamate.entities.Property;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -16,4 +17,15 @@ public class PropertiesDAO {
     public List<Property> loadAll() { return entityManager.createNamedQuery("Property.findAll", Property.class).getResultList(); }
     public void persist(Property property) { this.entityManager.persist(property); }
     public Property findById(Integer id) { return entityManager.find(Property.class, id); }
+    public List<Property> findByOwnerId(Integer ownerId) {
+        return entityManager.createNamedQuery("Property.findByOwnerId", Property.class)
+                .setParameter("ownerId", ownerId)
+                .getResultList();
+    }
+
+    public List<Property> findByAgentId(Integer agentId) {
+        return entityManager.createNamedQuery("Property.findByAgentId", Property.class)
+                .setParameter("agentId", agentId)
+                .getResultList();
+    }
 }

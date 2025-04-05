@@ -10,7 +10,9 @@ import java.util.Objects;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Property.findAll", query = "select p from Property as p")
+        @NamedQuery(name = "Property.findAll", query = "select p from Property as p"),
+        @NamedQuery(name = "Property.findByOwnerId", query = "SELECT p FROM Property p WHERE p.owner.id = :ownerId"),
+        @NamedQuery(name = "Property.findByAgentId", query = "SELECT p FROM Property p JOIN p.agents a WHERE a.id = :agentId")
 })
 @Table(name = "PROPERTY")
 @Getter @Setter
