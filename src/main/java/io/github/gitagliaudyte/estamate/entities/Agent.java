@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @NamedQueries({
@@ -19,6 +19,7 @@ public class Agent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
 
     @Size(max = 50)
@@ -29,11 +30,7 @@ public class Agent {
     private String phoneNumber;
 
     @ManyToMany(mappedBy = "agents")
-    private Set<Property> properties = new HashSet<>();
-
-    @Version
-    @Column(name = "OPT_LOCK_VERSION")
-    private Integer version;
+    private List<Property> properties = new ArrayList<>();
 
     public Agent() {}
 

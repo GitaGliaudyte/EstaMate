@@ -4,9 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @NamedQueries({
@@ -18,22 +18,25 @@ public class Property {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Integer id;
 
+    @Column(name = "ADDRESS")
     private String address;
+
+    @Column(name = "PRICE")
     private Double price;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id", nullable = false)
     private Owner owner;
 
     @ManyToMany
     @JoinTable(
-            name = "property_agents",
-            joinColumns = @JoinColumn(name = "property_id"),
-            inverseJoinColumns = @JoinColumn(name = "agent_id")
+            name = "AGENT_PROPERTY",
+            joinColumns = @JoinColumn(name = "PROPERTY_ID"),
+            inverseJoinColumns = @JoinColumn(name = "AGENT_ID")
     )
-    private Set<Agent> agents = new HashSet<>();
+    private List<Agent> agents = new ArrayList<>();
 
     public Property() {}
 

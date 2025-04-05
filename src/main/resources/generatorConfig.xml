@@ -18,7 +18,6 @@
 
         <table tableName="agents" domainObjectName="Agent" schema="public">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
-            <ignoreColumn column="opt_lock_version" />
         </table>
         <table tableName="owners" domainObjectName="Owner" schema="public">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
