@@ -7,15 +7,10 @@
 <persistence-unit name="RealEstatePU" transaction-type="JTA">
     <jta-data-source>java:jboss/datasources/RealEstateDS</jta-data-source>
     <properties>
-        <!-- Hibernate dialect for H2 -->
         <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-        <!-- Automatically create/drop schema at startup -->
-        <property name="hibernate.hbm2ddl.auto" value="update"/>
-        <!-- Show SQL statements -->
+        <property name="hibernate.hbm2ddl.auto" value="create"/>
         <property name="hibernate.show_sql" value="true"/>
-        <!-- Format SQL for readability -->
         <property name="hibernate.format_sql" value="true"/>
-        <!-- JDBC connection details -->
         <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/real-estate-db;AUTO_SERVER=TRUE"/>
         <property name="javax.persistence.jdbc.user" value="sa"/>
         <property name="javax.persistence.jdbc.password" value="sa"/>

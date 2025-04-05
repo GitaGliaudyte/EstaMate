@@ -1,4 +1,4 @@
-package io.github.gitagliaudyte.estamate.model;
+package io.github.gitagliaudyte.estamate.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;

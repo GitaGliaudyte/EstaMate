@@ -4,24 +4,28 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-    <context id="RealEstateDB" targetRuntime="MyBatis3Simple">
+    <context id="RealEstateDS" targetRuntime="MyBatis3Simple">
         <jdbcConnection driverClass="org.h2.Driver"
                         connectionURL="jdbc:h2:~/real-estate-db;AUTO_SERVER=TRUE"
                         userId="sa"
                         password="sa">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="lt.vu.mybatis.model" targetProject="MAVEN" />
+        <javaModelGenerator targetPackage="io.github.gitagliaudyte.estamate.mybatis.model" targetProject="src/main/java" />
 
-        <sqlMapGenerator targetPackage="lt.vu.mybatis.xml" targetProject="MAVEN" />
-        <javaClientGenerator type="XMLMAPPER" targetPackage="lt.vu.mybatis.dao" targetProject="MAVEN" />
+        <sqlMapGenerator targetPackage="io.github.gitagliaudyte.estamate.mybatis.xml" targetProject="src/main/resources" />
+        <javaClientGenerator type="XMLMAPPER" targetPackage="io.github.gitagliaudyte.estamate.mybatis.dao" targetProject="src/main/java" />
 
-<!--        <table schema="public" tableName="team">-->
-<!--            <generatedKey column="id" identity="true" sqlStatement="JDBC" />-->
-<!--        </table>-->
-<!--        <table schema="public" tableName="player">-->
-<!--            <generatedKey column="id" identity="true" sqlStatement="JDBC" />-->
-<!--            <ignoreColumn column="opt_lock_version" />-->
-<!--        </table>-->
+        <table tableName="agents" domainObjectName="Agent" schema="public">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        </table>
+        <table tableName="owners" domainObjectName="Owner" schema="public">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        </table>
+        <table tableName="properties" domainObjectName="Property" schema="public">
+            <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+        </table>
+        <table tableName="property_agents" domainObjectName="PropertyAgent" schema="public" />
+
     </context>
 </generatorConfiguration>
