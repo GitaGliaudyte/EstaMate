@@ -59,11 +59,6 @@
             <version>1.1.10.Final</version>
         </dependency>
         <dependency>
-            <groupId>io.github.gitagliaudyte.estamate</groupId>
-            <artifactId>EstaMate</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.1</version>

@@ -18,6 +18,7 @@
 
         <table tableName="agents" domainObjectName="Agent" schema="public">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+            <ignoreColumn column="opt_lock_version" />
         </table>
         <table tableName="owners" domainObjectName="Owner" schema="public">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
@@ -25,7 +26,5 @@
         <table tableName="properties" domainObjectName="Property" schema="public">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
         </table>
-        <table tableName="property_agents" domainObjectName="PropertyAgent" schema="public" />
-
     </context>
 </generatorConfiguration>

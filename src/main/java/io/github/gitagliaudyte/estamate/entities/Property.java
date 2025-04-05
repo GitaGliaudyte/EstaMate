@@ -1,16 +1,24 @@
 package io.github.gitagliaudyte.estamate.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "properties")
+@NamedQueries({
+        @NamedQuery(name = "Property.findAll", query = "select p from Property as p")
+})
+@Table(name = "PROPERTY")
+@Getter @Setter
 public class Property {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String address;
     private Double price;
@@ -27,5 +35,10 @@ public class Property {
     )
     private Set<Agent> agents = new HashSet<>();
 
-    // Getters and Setters
+    public Property() {}
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address);
+    }
 }
