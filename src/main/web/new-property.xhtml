@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Pridėti nuosavybę</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h2>Pridėti naują nuosavybę</h2>
+
+            <h:outputLabel for="owner">Savininkas:</h:outputLabel>
+            <h:selectOneMenu id="owner" value="#{propertyBean.selectedOwnerId}">
+                <f:selectItems value="#{propertyBean.owners}" var="o" itemValue="#{o.id}" itemLabel="#{o.name}" />
+            </h:selectOneMenu>
+            <br/>
+
+            <h:outputLabel for="address">Adresas:</h:outputLabel>
+            <h:inputText id="address" value="#{propertyBean.newProperty.address}" />
+            <br/>
+
+            <h:outputLabel for="price">Kaina:</h:outputLabel>
+            <h:inputText id="price" value="#{propertyBean.newProperty.price}" />
+            <br/><br/>
+
+            <h:commandButton value="Išsaugoti" action="#{propertyBean.save}" />
+        </h:form>
+
+        <br/>
+        <h:link value="Grįžti atgal" outcome="index.xhtml" />
+    </h:body>
+</html>
+

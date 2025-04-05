@@ -1,4 +1,4 @@
-package io.github.gitagliaudyte.estamate.entity;
+package io.github.gitagliaudyte.estamate.entities;
 
 import javax.persistence.*;
 import java.util.List;
