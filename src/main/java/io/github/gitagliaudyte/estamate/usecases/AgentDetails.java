@@ -52,12 +52,18 @@ public class AgentDetails implements Serializable {
     @Transactional
     @LoggedInvocation
     public String assignProperty() {
-        List<Property> properties = agent.getProperties();
-        Property propertyToAssign = propertiesDAO.findById(selectedPropertyId);
-        if(!properties.contains(propertyToAssign)) {
-            properties.add(propertyToAssign);
-            agent.setProperties(properties);
-            agentsDAO.update(agent);
+        if (selectedPropertyId > 0) {
+            Property propertyToAssign = propertiesDAO.findById(selectedPropertyId);
+            if (!agent.getProperties().contains(propertyToAssign)) {
+                agent.getProperties().add(propertyToAssign);
+
+                propertyToAssign.getAgents().add(agent);
+
+                propertiesDAO.update(propertyToAssign);
+                agentsDAO.update(agent);
+
+                filterAvailableProperties();
+            }
         }
         return "agentDetails?faces-redirect=true&agentId=" + this.agent.getId();
     }

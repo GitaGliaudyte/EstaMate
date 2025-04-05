@@ -6,7 +6,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-<h:head/>
+<h:head>
+    <h:outputStylesheet name="css/styles.css" />
+</h:head>
+
 <h:body>
     <h2>Agent: #{properties.agent.name}</h2>
     <p>Phone number: #{properties.agent.phoneNumber}</p>

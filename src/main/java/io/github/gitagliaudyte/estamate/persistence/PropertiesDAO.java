@@ -6,6 +6,7 @@ import io.github.gitagliaudyte.estamate.entities.Property;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -27,5 +28,12 @@ public class PropertiesDAO {
         return entityManager.createNamedQuery("Property.findByAgentId", Property.class)
                 .setParameter("agentId", agentId)
                 .getResultList();
+    }
+
+    @Transactional(Transactional.TxType.REQUIRES_NEW)
+    public Property update(Property property) {
+        property = entityManager.merge(property);
+        entityManager.flush();
+        return property;
     }
 }

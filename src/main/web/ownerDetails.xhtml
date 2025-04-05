@@ -6,7 +6,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
-<h:head/>
+<h:head>
+    <h:outputStylesheet name="css/styles.css" />
+</h:head>
+
 <h:body>
     <h2>Owner: #{ownerDetails.owner.name}</h2>
     <h3>Properties:</h3>
