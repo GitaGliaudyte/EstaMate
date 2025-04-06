@@ -12,17 +12,16 @@
         </jdbcConnection>
 
         <javaModelGenerator targetPackage="io.github.gitagliaudyte.estamate.mybatis.model" targetProject="src/main/java" />
-
         <sqlMapGenerator targetPackage="io.github.gitagliaudyte.estamate.mybatis.xml" targetProject="src/main/resources" />
         <javaClientGenerator type="XMLMAPPER" targetPackage="io.github.gitagliaudyte.estamate.mybatis.dao" targetProject="src/main/java" />
 
-        <table tableName="agents" domainObjectName="Agent" schema="public">
+        <table tableName="AGENT" domainObjectName="Agent" schema="PUBLIC">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
         </table>
-        <table tableName="owners" domainObjectName="Owner" schema="public">
+        <table tableName="OWNER" domainObjectName="Owner" schema="PUBLIC">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
         </table>
-        <table tableName="properties" domainObjectName="Property" schema="public">
+        <table tableName="PROPERTY" domainObjectName="Property" schema="PUBLIC">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
         </table>
     </context>

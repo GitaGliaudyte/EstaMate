@@ -3,6 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <typeAliases>
+        <typeAlias type="io.github.gitagliaudyte.estamate.mybatis.model.Property" alias="Property"/>
+        <typeAlias type="io.github.gitagliaudyte.estamate.mybatis.model.Agent" alias="Agent"/>
+        <typeAlias type="io.github.gitagliaudyte.estamate.mybatis.model.Owner" alias="Owner"/>
+    </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="MANAGED"/>
@@ -12,8 +17,8 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="io.github.gitagliaudyte.estamate.mybatis.xml/AgentMapper.xml"/>
-        <mapper resource="io.github.gitagliaudyte.estamate.mybatis.xml/OwnerMapper.xml"/>
-        <mapper resource="io.github.gitagliaudyte.estamate.mybatis.xml/PropertyMapper.xml"/>
+        <mapper resource="mybatis.xml/AgentMapper.xml"/>
+        <mapper resource="mybatis.xml/OwnerMapper.xml"/>
+        <mapper resource="mybatis.xml/PropertyMapper.xml"/>
     </mappers>
 </configuration>

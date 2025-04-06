@@ -1,6 +1,6 @@
 package io.github.gitagliaudyte.estamate.entities;
 
-import jakarta.validation.constraints.Size;
+import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 

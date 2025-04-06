@@ -15,7 +15,7 @@
     <h3>Properties:</h3>
     <ol>
         <ui:repeat value="#{properties.owner.properties}" var="property">
-            <p>Address:   #{property.address}      Price:   #{property.price}</p>
+            <li><h:link value="Address:   #{property.address}      Price:   #{property.price}" outcome="propertyMyBatis?propertyId=#{property.id}"/></li>
         </ui:repeat>
     </ol>
 

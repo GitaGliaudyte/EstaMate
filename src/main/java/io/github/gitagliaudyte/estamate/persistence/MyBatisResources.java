@@ -15,7 +15,7 @@ public class MyBatisResources {
     @Produces
     @ApplicationScoped
     @SessionFactoryProvider
-    private SqlSessionFactory produceSqlSessionFactory() {
+    public SqlSessionFactory produceSqlSessionFactory() {
         try {
             return new SqlSessionFactoryBuilder().build(
                     Resources.getResourceAsStream("MyBatisConfig.xml")
