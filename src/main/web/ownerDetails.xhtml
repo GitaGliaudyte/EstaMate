@@ -14,10 +14,18 @@
     <h2>Owner: #{ownerDetails.owner.name}</h2>
     <h3>Properties:</h3>
     <ol>
-        <ui:repeat value="#{properties.owner.properties}" var="property">
-            <li><h:link value="Address:   #{property.address}      Price:   #{property.price}" outcome="propertyMyBatis?propertyId=#{property.id}"/></li>
+        <ui:repeat value="#{ownerDetails.owner.properties}" var="property">
+            <h:link value="Address: #{property.address} Price: #{property.price}"
+                    outcome="propertyMyBatis">
+                <f:param name="propertyId" value="#{property.id}" />
+            </h:link>
         </ui:repeat>
     </ol>
+
+    <h3>Relevant agents:</h3>
+    <ui:repeat value="#{ownerDetails.ownersAgents.agents}" var="agent">
+        <p>#{agent.name}</p>
+    </ui:repeat>
 
     <h3>Add Property:</h3>
     <h:form>

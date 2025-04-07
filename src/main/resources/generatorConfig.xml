@@ -11,9 +11,9 @@
                         password="sa">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="io.github.gitagliaudyte.estamate.mybatis.model" targetProject="src/main/java" />
-        <sqlMapGenerator targetPackage="io.github.gitagliaudyte.estamate.mybatis.xml" targetProject="src/main/resources" />
-        <javaClientGenerator type="XMLMAPPER" targetPackage="io.github.gitagliaudyte.estamate.mybatis.dao" targetProject="src/main/java" />
+        <javaModelGenerator targetPackage="io.github.gitagliaudyte.estamate.mybatis.model" targetProject="MAVEN" />
+        <sqlMapGenerator targetPackage="io.github.gitagliaudyte.estamate.mybatis.xml" targetProject="MAVEN" />
+        <javaClientGenerator type="XMLMAPPER" targetPackage="io.github.gitagliaudyte.estamate.mybatis.dao" targetProject="MAVEN" />
 
         <table tableName="AGENT" domainObjectName="Agent" schema="PUBLIC">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />

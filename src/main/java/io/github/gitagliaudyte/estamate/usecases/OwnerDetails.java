@@ -18,6 +18,10 @@ import java.util.Map;
 @RequestScoped
 public class OwnerDetails {
 
+    @Getter
+    @Inject
+    private OwnersAgents ownersAgents;
+
     @Inject
     private OwnersDAO ownersDAO;
 
@@ -38,5 +42,7 @@ public class OwnerDetails {
         } else {
             owner.setProperties(new ArrayList<>());
         }
+        ownersAgents.loadAgentsForOwner(owner);
     }
+
 }
