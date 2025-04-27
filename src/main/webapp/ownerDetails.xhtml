@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+    <h:outputStylesheet name="css/styles.css" />
+</h:head>
+
+<h:body>
+    <h2>#{ownerDetails.ownerInformation()}</h2>
+    <h3>Properties:</h3>
+    <ol>
+        <ui:repeat value="#{ownerDetails.owner.properties}" var="property">
+            <h:link value="Address: #{property.address} Price: #{property.price}"
+                    outcome="propertyMyBatis">
+                <f:param name="propertyId" value="#{property.id}" />
+            </h:link>
+            <br/>
+        </ui:repeat>
+    </ol>
+
+    <h3>Agents:</h3>
+    <ui:repeat value="#{ownerDetails.ownersAgents.agents}" var="agent">
+        <p>#{agent.name}</p>
+    </ui:repeat>
+
+    <h3>Add Property:</h3>
+    <h:form>
+        <h:inputText a:placeholder="address" value="#{properties.propertyToCreate.address}" required="true"/>
+        <h:inputText a:placeholder="price" value="#{properties.propertyToCreate.price}" required="true"/>
+        <h:commandButton value="Add Property" action="#{properties.createProperty}">
+            <f:param name="ownerId" value="#{properties.owner.id}" />
+        </h:commandButton>
+    </h:form>
+
+    <h:link outcome="index" value="Back to main page"/>
+</h:body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <h:outputStylesheet name="css/styles.css" />
+</h:head>
+
+<h:body>
+    <h1>Property Details</h1>
+
+    <h2>Owner: #{propertiesMyBatis.owner.name}</h2>
+
+    <h3>Property Details:</h3>
+    <p>Address: #{propertiesMyBatis.property.address}</p>
+    <p>Price: #{propertiesMyBatis.property.price}</p>
+
+    <h:link outcome="ownerDetails?ownerId=#{propertiesMyBatis.owner.id}" value="Back to #{propertiesMyBatis.owner.name}"/>
+</h:body>
+</html>

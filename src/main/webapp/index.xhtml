@@ -1,21 +1,47 @@
-<!DOCTYPE html>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
->
-<h:head/>
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<h:head>
+    <h:outputStylesheet name="css/styles.css" />
+
+    <title>Welcome to EstaMate</title>
+</h:head>
 <h:body>
-    <h2>Teams:</h2>
-    <ol>
-        <ui:repeat value="#{teams.allTeams}" var="team">
-            <li><h:link value="#{team.name}" outcome="players?teamId=#{team.id}" /></li>
+    <h1>Welcome to EstaMate!</h1>
+
+    <h2>Clients:</h2>
+    <ul>
+        <ui:repeat value="#{owners.allOwners}" var="owner">
+            <li><h:link value="#{owner.name}" outcome="ownerDetails?ownerId=#{owner.id}"/></li>
         </ui:repeat>
-    </ol>
+    </ul>
+
+    <h:link value="See all clients with their properties" outcome="/ownersPropertiesMyBatis"/>
+
     <h:form>
-        <h:inputText value="#{teams.teamToCreate.name}" required="true" />
-        <h:commandButton value="Add new team" actionListener="#{teams.createTeam}" action="index?faces-redirect=true"/>
+        <h:inputText a:placeholder="name" value="#{owners.ownerToCreate.name}" required="true" />
+        <h:commandButton value="Add new client" action="#{owners.createOwner}" />
     </h:form>
-    <h:link outcome="myBatis/teams" value="MyBatis implementation"/>
+
+
+    <h2>Agents:</h2>
+    <ul>
+        <ui:repeat value="#{agents.allAgents}" var="agent">
+            <li><h:link value="#{agent.name}" outcome="agentDetails?agentId=#{agent.id}"/></li>
+        </ui:repeat>
+    </ul>
+
+    <h:form>
+        <h:inputText a:placeholder="name" value="#{agents.agentToCreate.name}" required="true" />
+        <h:inputText a:placeholder="phone number" value="#{agents.agentToCreate.phoneNumber}" required="true" />
+        <h:commandButton value="Add new agent" action="#{agents.createAgent}" />
+    </h:form>
+
 </h:body>
+
 </html>

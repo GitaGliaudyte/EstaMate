@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet name="css/styles.css" />
+</h:head>
+
+<h:body>
+    <h2>Agent: #{agentDetails.agent.name}</h2>
+    <p>Phone number: #{agentDetails.agent.phoneNumber}</p>
+
+    <h3>Properties:</h3>
+    <ol>
+        <ui:repeat value="#{agentDetails.agent.properties}" var="property">
+            <li>
+                Address: #{property.address}, Price: #{property.price}, #{agentDetails.calculateTaxes(property.id)}
+            </li>
+        </ui:repeat>
+    </ol>
+
+    <h:form>
+        <h3>Assign Property to Agent:</h3>
+        <h:selectOneMenu value="#{agentDetails.selectedPropertyId}">
+            <f:selectItems value="#{agentDetails.availableProperties}" var="property" itemValue="#{property.id}" itemLabel="#{property.address}"/>
+        </h:selectOneMenu>
+        <h:commandButton value="Assign a property" action="#{agentDetails.assignProperty}">
+            <f:param name="agentId" value="#{agentDetails.agent.id}"/>
+        </h:commandButton>
+    </h:form>
+
+    <h:link outcome="index" value="Back to main page"/>
+
+</h:body>
+</html>
