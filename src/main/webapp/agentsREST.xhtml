@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet name="css/styles.css" />
+    <title>Agents REST Demo</title>
+</h:head>
+<h:body>
+    <h1>EstaMate Agent REST Demo</h1>
+
+    <h2>Gauti visus agentus (GET)</h2>
+    <h:form>
+        <h2>Gauti visus agentus</h2>
+        <h:commandButton value="Gauti agentus" onclick="getAllAgents(); return false;" />
+    </h:form>
+    <pre id="allAgentsResult"></pre>
+
+    <h:form>
+        <h2>Gauti agentą pagal ID</h2>
+        ID: <input type="text" id="getByIdInput" />
+        <h:commandButton value="Gauti" onclick="getAgentById(); return false;" />
+    </h:form>
+    <pre id="getByIdResult"></pre>
+
+    <h2>Sukurti naują agentą (POST)</h2>
+    <h:form>
+        <h2>Sukurti agentą</h2>
+        Vardas: <input type="text" id="postName" /><br/>
+        Tel. numeris: <input type="text" id="postPhone" /><br/>
+        <h:commandButton value="Sukurti" onclick="createAgent(); return false;" />
+    </h:form>
+    <pre id="postResult"></pre>
+
+    <h2>Atnaujinti agentą (PUT)</h2>
+    <h:form>
+        ID: <input type="text" id="putId" /><br/>
+        Naujas vardas: <input type="text" id="putName" /><br/>
+        <h:commandButton value="Atnaujinti" onclick="updateAgent(); return false;" />
+    </h:form>
+    <pre id="putResult"></pre>
+
+    <script type="text/javascript">
+        const baseUrl = "http://localhost:8080/java-ee-practice/api/agentDetails";
+
+        function getAllAgents() {
+            fetch(baseUrl + "/getall")
+                .then(response => response.json())
+                .then(data => document.getElementById('allAgentsResult').textContent = JSON.stringify(data, null, 2))
+                .catch(error => document.getElementById('allAgentsResult').textContent = error);
+        }
+
+        function getAgentById() {
+            const id = document.getElementById('getByIdInput').value;
+
+            fetch(baseUrl + "/get" + id)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Agentas nerastas");
+                    }
+                    return response.json();
+                })
+                .then(data => document.getElementById('getByIdResult').textContent = JSON.stringify(data, null, 2))
+                .catch(error => document.getElementById('getByIdResult').textContent = error);
+        }
+
+        function createAgent() {
+            const name = document.getElementById('postName').value;
+            const phone = document.getElementById('postPhone').value;
+
+            fetch(baseUrl + "/post", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: name,
+                    phoneNumber: phone,
+                    properties: []
+                })
+            })
+                .then(response => {
+                    document.getElementById('postResult').textContent = "Status: " + response.status;
+                    return response.text();
+                })
+                .catch(error => document.getElementById('postResult').textContent = error);
+        }
+
+        function updateAgent() {
+            const id = document.getElementById('putId').value;
+            const name = document.getElementById('putName').value;
+
+            fetch(baseUrl + "/put" + id, {
+                method: "PUT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: name
+                })
+            })
+                .then(response => response.json())
+                .then(data => document.getElementById('putResult').textContent = JSON.stringify(data, null, 2))
+                .catch(error => document.getElementById('putResult').textContent = error);
+        }
+    </script>
+</h:body>
+</html>

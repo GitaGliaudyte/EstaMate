@@ -27,4 +27,4 @@ public class OwnersPropertiesMyBatis implements Serializable {
         this.owners = ownerMapper.selectAllWithProperties();
     }
 
-}
+};
