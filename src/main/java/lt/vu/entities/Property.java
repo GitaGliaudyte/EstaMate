@@ -32,6 +32,9 @@ public class Property {
     @ManyToOne
     private Owner owner;
 
+    @Column(name = "TAXES_ID_NO")
+    private Integer taxesIdNo;
+
     @ManyToMany
     @JoinTable(
             name = "AGENT_PROPERTY",

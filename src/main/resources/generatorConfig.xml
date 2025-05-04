@@ -19,6 +19,7 @@
 
         <table schema="PUBLIC" tableName="AGENT">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />
+            <ignoreColumn column="opt_lock_version" />
         </table>
         <table schema="PUBLIC" tableName="OWNER">
             <generatedKey column="id" identity="true" sqlStatement="JDBC" />

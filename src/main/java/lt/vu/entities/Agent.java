@@ -32,6 +32,10 @@ public class Agent {
     @ManyToMany(mappedBy = "agents")
     private List<Property> properties = new ArrayList<>();
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
+
     public Agent() {}
 
     @Override

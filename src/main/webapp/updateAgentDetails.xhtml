@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:a="http://java.sun.com/jsf/composite">
+
+<h:head>
+    <h:outputStylesheet name="css/styles.css" />
+</h:head>
+
+<h:body>
+    <h2>Update #{updateAgentDetails.agent.name} details</h2>
+
+    <h:form>
+        <h:outputText value="Change agent name: "/>
+        <h:inputText a:placeholder="New name" value="#{updateAgentDetails.agent.name}" required="true" />
+        <h:commandButton value="Update" action="#{updateAgentDetails.updateAgent()}">
+            <f:param name="agentId" value="#{updateAgentDetails.agent.id}" />
+        </h:commandButton>
+        <br></br>
+        <h:outputText value="Value was already modified by other user. If you want to override it - try again" rendered="#{param['error'] == 'optimistic-lock-exception'}" />
+    </h:form>
+
+    <h4>Agent name version: #{updateAgentDetails.agent.version}</h4>
+
+    <h:link outcome="agentDetails?agentId=#{updateAgentDetails.agent.id}" value="Back to agent details"/>
+
+</h:body>
+
+</html>
