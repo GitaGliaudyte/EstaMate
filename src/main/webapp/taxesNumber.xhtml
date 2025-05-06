@@ -21,7 +21,6 @@
                          action="#{generateTaxesNumber.generateNewTaxesNumber()}">
             <f:param name="propertyId" value="#{updatePropertyDetails.property.id}"/>
         </h:commandButton>
-
     </h:form>
 
     <h:link outcome="ownerDetails?ownerId=#{updatePropertyDetails.property.owner.id}" value="Back to owner"/>

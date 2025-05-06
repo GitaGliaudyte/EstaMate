@@ -12,7 +12,7 @@
     <decorators>
         <class>lt.vu.decorators.TaxesNumberGeneratorDecorator</class>
     </decorators>
-    <!--    <alternatives>-->
-    <!--        <class>lt.vu.persistence.AlternativeAgentsDAO</class>-->
-    <!--    </alternatives>-->
+<!--    <alternatives>-->
+<!--        <class>lt.vu.persistence.AlternativeAgentsDAO</class>-->
+<!--    </alternatives>-->
 </beans>

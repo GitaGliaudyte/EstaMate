@@ -13,6 +13,8 @@
     <h2>Agent: #{agentDetails.agent.name}</h2>
     <p>Phone number: #{agentDetails.agent.phoneNumber}</p>
 
+    <h:link outcome="updateAgentDetails?agentId=#{agentDetails.agent.id}" value="Edit agent details"/>
+
     <h3>Properties:</h3>
     <ol>
         <ui:repeat value="#{agentDetails.agent.properties}" var="property">
